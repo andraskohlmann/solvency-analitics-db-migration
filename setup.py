@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="solvency-analitics-db-migration", # Replace with your own username
-    version="0.0.1dev1",
+    version="0.0.1dev2",
     author="Andras Kohlmann",
     author_email="metuoku@outlook.com",
     description="Nano db migration framework",

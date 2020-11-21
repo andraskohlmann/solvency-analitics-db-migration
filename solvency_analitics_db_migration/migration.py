@@ -1,16 +1,14 @@
 import os
 import glob
 from .sql import SQL
-import sqlite3
 
 class Migration:
-    def __init__(self, path, database, name, store):
+    def __init__(self, db_connection, path, name, store):
         self.path = path
-        self.dbstring = database
         self.name = name
         self.store = store
         self.migrations = []
-        self.conn = None
+        self.conn = db_connection
         self.SQL = SQL
 
     def getLastMigration(self):
@@ -49,7 +47,6 @@ class Migration:
         print(self.execute(self.SQL['selectAllMigrationStatus'].format(tablename = self.store)))
 
     def run(self):
-        self.conn = sqlite3.connect(self.dbstring)
         last_migration = self.getLastMigration()
         if last_migration is None:
             self.createNewMigration()
