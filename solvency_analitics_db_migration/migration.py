@@ -56,7 +56,6 @@ class Migration:
         if len(self.migrations) > last_migration:
             self.applyMigrations(last_migration)
         self.printMigrationStatus()
-        self.conn.close()
 
     def fetchOneResult(self, sql, data):
         try:
